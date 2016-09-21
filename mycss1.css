@@ -22,8 +22,9 @@
 #top .logo p{font-size:13px;}
 #mainbody{position:relative;
 	width:100%;
+	min-width: 1000px;
 	height:450px;
-	background:#ff6a6a;
+	background-color:#ff6a6a;
 					}
 #mainbody .round{
 	position:relative;
@@ -172,6 +173,7 @@
 #footer{
 	position:relative;
 	width:100%;
+	min-width: 1000px;
 	height:150px;
 	background-color:#ff6a6a;
 	
@@ -209,7 +211,8 @@
 #footer .footer0 img{
 position: absolute;
 right:20px;
-top:25px;
+top:6px;
+
 }
 /*#footer .footer2{
 	position:absolute;
