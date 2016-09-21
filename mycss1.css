@@ -133,7 +133,7 @@
 	}
 #mainbody .number .num1{
 	position:absolute;
-	width:11em;
+	width:13em;
 	height:3em;
 	}
 #mainbody .number .num1 .tel{
@@ -198,9 +198,8 @@
 	display: inline-block;
 	
 	width: 160px;
-	height: 75px;
+	
 	text-align: center;
-	padding-top: 20px;
 	border-right:1px solid  #666;
 }
 #footer li:last-child{
