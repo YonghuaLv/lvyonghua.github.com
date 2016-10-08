@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>仿小米商城 webApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+	<script src="js/zepto.min.js"></script>
+	<script src="js/jquery-2.2.1.min.js"></script>
+	<!-- <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script> -->
+	<link href="animate.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+	   blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, th, ul,img{
+		margin: 0;
+		padding: 0;
+		}
+		/*
+		 *body设置滚动条隐藏，属性为flex的元素无法滚动
+		 */
+	   body{
+	   	/*overflow:hidden;*/
+	   	background-color: #F6F6F6;
+	   }
+
+	   ul{list-style:none}
+	   .clearfix:after{display: block; content: "\20"; height: 0; clear: both; overflow: hidden; visibility: hidden;}/*ie8以上*/
+	</style>
+  <body>
+    <!-- 底部导航条区域==start -->
+<div id="nav-bar" class="box">
+	<div class="items hover"><i class="iconfont">&#xe604;</i><p>首页</p></div>
+	<div class="items"><i class="iconfont">&#xe603;</i><p>分类</p></div>
+	<div class="items"><i class="iconfont">&#xe601;</i><p>购物车</p></div>
+	<div class="items"><i class="iconfont">&#xe602;</i><p>我的</p></div>
+</div>
+  <!-- 底部导航条区域==end -->
+ <!-- 首页==start -->
+<div class="home">
+	  <!-- 搜索区===start -->
+	  <div id="search" class="box search">
+	    <!-- 搜索框引入iconfont图标 -->
+	    <i class="iconfont">&#xe600;</i>
+	  	<input type="search">
+	  	<span>搜索商品名称</span>
+	  	<!-- <canvas class="searchCanvas"></canvas> -->
+	  </div>
+	  <div id="line"></div>
+
+	  <!-- 	<canvas class="searchCanvas"></canvas> -->
+
+	  <!-- 搜索区==end -->
+	  <!-- 轮播图区域==start -->
+	  <div id="change-pic">
+		  <ul class="ul">
+		  	<li><img src="images/7.jpg"></li>
+		  	<li><img src="images/8.jpg"></li>
+		  	<li><img src="images/9.jpg"></li>
+		  	<li><img src="images/10.jpg"></li>
+		  </ul>
+		  <div class="change-tab"><ul><li class="active"></li><li></li><li></li><li></li></ul></div>
+	  </div>
+	  <!-- 轮播图区域==end -->
+	  <!-- 商品推荐区域==start -->
+	  <div id="recommend">
+	  	<div class="row" class="box">
+	  		<sapn class="items"><img src="images/1.png" alt=""></sapn>
+	  		<sapn class="items"><img src="images/2.jpg" alt=""></sapn>
+	  		<sapn class="items"><img src="images/3.jpg" alt=""></sapn>
+	  	</div>
+	  	<div class="row" class="box">
+	  		<span class="items"><img src="images/4.png" alt=""></span>
+	  		<span class="items"><img src="images/5.jpg" alt=""></span>
+	  		<span class="items"><img src="images/6.jpg" alt=""></span>
+	  	</div>
+	  </div>
+	  <!-- 商品推荐区域==end -->
+	  <!-- 商品列表区域==start -->
+	  <div id="buy-off" class='box'>
+	  	<ul>
+	  		<li>
+		  		<img data-original="img/130.png" src="images/130.png">
+		  		<span><p>小米手机5 尊享版</p><p>4GB内存+128GB闪存，陶瓷版</p><p>2499元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/131.png" src="images/131.png">
+		  		<span><p>小米Max 高配版</p><p>6.44英寸大屏，3GB内存+64GB容量</p><p>1699元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/132.png" src="images/132.png">
+		  		<span><p>红米手机3S</p><p>金属机身，指纹识别，超长待机</p><p>699元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/133.jpg" src="images/133.jpg">
+		  		<span><p>红米Note 3</p><p>4000mAh轻薄大电池 金属机身</p><p>899元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/134.png" src="images/134.png">
+		  		<span><p>小米平板2 16GB现货</p><p>轻薄全金属，海量内容</p><p>999元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/135.jpg" src="images/135.jpg">
+		  		<span><p>小米电视S 43英寸</p><p>全金属旗舰，液晶屏幕</p><p>1799元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/136.jpg" src="images/136.jpg">
+		  		<span><p>小米盒子3增强版</p><p>高端4K 网络机顶盒</p><p>399元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/137.png" src="images/137.png">
+		  		<span><p>小米手环2</p><p>每天早10点开售</p><p>149元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/138.jpg" src="images/138.jpg">
+		  		<span><p>小米LED智能台灯</p><p>无可视频闪，亮度色温无级调节</p><p>169元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/139.jpg" src="images/139.jpg">
+		  		<span><p>小米空气净化器</p><p>10分钟，房间空气焕然一新</p><p>699元</p></span>
+	  		</li>
+	  		
+	  		<li>
+		  		<img data-original="img/141.jpg" src="images/141.jpg">
+		  		<span><p>小米路由器3</p><p>四天线设计，更安全更稳定</p><p>149元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/142.jpg" src="images/142.jpg">
+		  		<span><p>电助力折叠自行车</p><p>力矩传感电助力，让城市出行轻松有趣</p><p>2999元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/143.jpg" src="images/143.jpg">
+		  		<span><p>米兔智能故事机</p><p>能说会道，宝宝的好玩伴</p><p>199元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/144.jpg" src="images/144.jpg">
+		  		<span><p>小米净水器 厨下式</p><p>RO反渗透直出纯净水，包邮包安装</p><p>1999元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/145.jpg" src="images/145.jpg">
+		  		<span><p>iHealth智能血压计蓝牙版</p><p>送给父母的健康礼物 测血压仅需1步</p><p>149元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/146.jpg" src="images/146.jpg">
+		  		<span><p>米家压力IH电饭煲</p><p>智能烹饪，3L 容量</p><p>999元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/147.jpg" src="images/147.jpg">
+		  		<span><p>全系智能套装限时款</p><p>开启你的智能生活</p><p>292元</p></span>
+	  		</li>
+	  		<li>
+		  		<img data-original="img/148.jpg" src="images/148.jpg">
+		  		<span><p>小米手环 光感版</p><p>实时监测心率，科学运动</p><p>99元</p></span>
+	  		</li>
+	  	</ul>
+	  </div>
+	  <!-- 商品列表区域==end -->
+	  <!-- 小米电话卡区域==start -->
+	  <div id="mi-sim" class="box">
+	  	<div class="items">
+		  	<img src="images/11.jpg">
+	  	</div>
+	  	<div class="items">
+		  	<img src="images/12.jpg" alt="">
+	  	</div>
+	  </div>
+	  <!-- 小米电话卡区域==end -->
+	<!-- 空内容占位区域==start -->
+	<div class="space"></div>
+	<!-- 空内容占位区域==end -->
+	</div>
+<!-- 首页==end -->
+<!-- 分类==start -->
+<div class="classify">
+    <!-- 标题 -->
+    <div id="top" class="box">
+    	<i class="iconfont return">&#xe605;</i>
+    	<p>商品分类</p>
+    	<i class="iconfont search">&#xe600;</i>
+    </div>
+    <!-- 手机/电话卡 -->
+	<div id="phone" class="box">
+		<h5>手机/电话卡</h5>
+		<div><img data-original="images/01.jpg" src="images/013.jpg"><p>小米Max</p></div>
+		<div><img data-original="images/02.jpg" src="images/014.jpg"><p>小米手机5</p></div>
+		<div><img data-original="images/03.jpg" src="images/015.jpg"><p>小米手机4c</p></div>
+		<div><img data-original="images/04.jpg" src="images/016.jpg" alt=""><p>红米Pro</p></div>
+		<div><img data-original="images/05.jpg" src="images/017.jpg" alt=""><p>红米Note3</p></div>
+		<div><img data-original="images/06.jpg" src="images/018.jpg" alt=""><p>红米手机3S</p></div>
+		<div><img data-original="images/07.jpg" src="images/019.jpg" alt=""><p>红米手机3</p></div>
+		<div><img data-original="images/06.jpg" src="images/11.jpg" alt=""><p>任我行</p></div>
+		<div><img data-original="images/07.jpg" src="images/12.jpg" alt=""><p>吃到饱</p></div>
+	</div>
+	<!-- 笔记本/平板 -->
+	<div id="pc" class="box">
+	    <h5>笔记本/平板</h5>
+		<div><img data-original="images/11.jpg" src="images/020.jpg" alt=""><p>笔记本12.5"</p></div>
+		<div><img data-original="images/12.jpg" src="images/021.jpg" alt=""><p>笔记本13.5"</p></div>
+		<div><img data-original="images/09.jpg" src="images/022.jpg" alt=""><p>平板2</p></div>
+		<div><img data-original="images/10.jpg" src="images/023.jpg" alt=""><p>平板2 Windows版</p></div>
+	</div>
+	<!-- 电视/盒子 -->
+	<div id="tv" class="box">
+		<h5>电视/盒子</h5>
+		<div><img data-original="images/01.jpg" src="images/13.jpg"><p>小米Max</p></div>
+		<div><img data-original="images/02.jpg" src="images/14.jpg"><p>小米手机5</p></div>
+		<div><img data-original="images/03.jpg" src="images/15.jpg"><p>小米手机4c</p></div>
+		<div><img data-original="images/04.jpg" src="images/16.jpg" alt=""><p>红米Pro</p></div>
+		<div><img data-original="images/05.jpg" src="images/17.jpg" alt=""><p>红米Note3</p></div>
+		<div><img data-original="images/06.jpg" src="images/18.jpg" alt=""><p>红米手机3S</p></div>
+		<div><img data-original="images/07.jpg" src="images/19.png" alt=""><p>红米手机3</p></div>
+		<div><img data-original="images/06.jpg" src="images/20.png" alt=""><p>任我行</p></div>
+		<div><img data-original="images/07.jpg" src="images/21.jpg" alt=""><p>吃到饱</p></div>
+		<div><img data-original="images/07.jpg" src="images/22.jpg" alt=""><p>吃到饱</p></div>
+		<div><img data-original="images/07.jpg" src="images/23.jpg" alt=""><p>吃到饱</p></div>
+		<div><img data-original="images/07.jpg" src="images/24.jpg" alt=""><p>吃到饱</p></div>
+	</div>
+	<!-- 智能硬件/路由器 -->
+	<div id="hardware" class="box">
+		<h5>智能硬件/路由器</h5>
+		<div><img data-original="images/01.jpg" src="images/25.jpg"><p>小米Max</p></div>
+		<div><img data-original="images/02.jpg" src="images/26.jpg"><p>小米手机5</p></div>
+		<div><img data-original="images/03.jpg" src="images/27.jpg"><p>小米手机4c</p></div>
+		<div><img data-original="images/04.jpg" src="images/28.jpg" alt=""><p>红米Pro</p></div>
+		<div><img data-original="images/05.jpg" src="images/29.jpg" alt=""><p>红米Note3</p></div>
+		<div><img data-original="images/06.jpg" src="images/30.jpg" alt=""><p>红米手机3S</p></div>
+		<div><img data-original="images/07.jpg" src="images/31.jpg" alt=""><p>红米手机3</p></div>
+		<div><img data-original="images/06.jpg" src="images/32.jpg" alt=""><p>任我行</p></div>
+		<div><img data-original="images/06.jpg" src="images/33.jpg" alt=""><p>任我行</p></div>
+		<div><img data-original="images/06.jpg" src="images/34.jpg" alt=""><p>任我行</p></div>
+		<div><img data-original="images/06.jpg" src="images/35.jpg" alt=""><p>任我行</p></div>
+		<div><img data-original="images/07.jpg" src="images/36.jpg" alt=""><p>吃到饱</p></div>
+	</div>
+	<!-- 移动电源/插线板/电池 -->
+	<div id="power" class="box">
+		<h5>移动电源/插线板/电池</h5>
+		<div><img data-original="images/01.jpg" src="images/88.jpg"><p>小米Max</p></div>
+		<div><img data-original="images/02.jpg" src="images/89.jpg"><p>小米手机5</p></div>
+		<div><img data-original="images/03.jpg" src="images/90.jpg"><p>小米手机4c</p></div>
+		<div><img data-original="images/04.jpg" src="images/91.jpg" alt=""><p>红米Pro</p></div>
+		<div><img data-original="images/05.jpg" src="images/92.jpg" alt=""><p>红米Note3</p></div>
+		<div><img data-original="images/06.jpg" src="images/96.jpg" alt=""><p>红米手机3S</p></div>
+		<div><img data-original="images/07.jpg" src="images/97.jpg" alt=""><p>红米手机3</p></div>
+	</div>
+	<!-- 耳机/音箱/存储卡 -->
+	<div id="headset" class="box">
+		<h5>耳机/音箱/存储卡</h5>
+		<div><img data-original="images/01.jpg" src="images/98.jpg"><p>小米Max</p></div>
+		<div><img data-original="images/02.jpg" src="images/99.jpg"><p>小米手机5</p></div>
+		<div><img data-original="images/03.jpg" src="images/100.jpg"><p>小米手机4c</p></div>
+		<div><img data-original="images/04.jpg" src="images/101.jpg" alt=""><p>红米Pro</p></div>
+		<div><img data-original="images/05.jpg" src="images/102.jpg" alt=""><p>红米Note3</p></div>
+		<div><img data-original="images/06.jpg" src="images/103.jpg" alt=""><p>红米手机3S</p></div>
+		<div><img data-original="images/07.jpg" src="images/104.png" alt=""><p>红米手机3</p></div>
+		<div><img data-original="images/06.jpg" src="images/105.jpg" alt=""><p>任我行</p></div>
+		<div><img data-original="images/07.jpg" src="images/106.jpg" alt=""><p>吃到饱</p></div>
+		<div><img data-original="images/07.jpg" src="images/107.jpg" alt=""><p>吃到饱</p></div>
+		<div><img data-original="images/07.jpg" src="images/108.jpg" alt=""><p>吃到饱</p></div>
+	</div>
+	<!-- 小米生活方式 -->
+	<div id="life" class="box">
+		<h5>小米生活方式</h5>
+		<div><img data-original="images/01.jpg" src="images/115.jpg"><p>小米Max</p></div>
+		<div><img data-original="images/02.jpg" src="images/117.jpg"><p>小米手机5</p></div>
+		<div><img data-original="images/03.jpg" src="images/220.jpg"><p>小米手机4c</p></div>
+		<div><img data-original="images/04.jpg" src="images/222.jpg" alt=""><p>红米Pro</p></div>
+		<div><img data-original="images/05.jpg" src="images/229.jpg" alt=""><p>红米Note3</p></div>
+		<div><img data-original="images/06.jpg" src="images/255.jpg" alt=""><p>红米手机3S</p></div>
+		<div><img data-original="images/07.jpg" src="images/273.jpg" alt=""><p>红米手机3</p></div>
+		<div><img data-original="images/06.jpg" src="images/11.jpg" alt=""><p>任我行</p></div>
+		<div><img data-original="images/07.jpg" src="images/12.jpg" alt=""><p>吃到饱</p></div>
+	</div>
+	<!-- 保护类配件 -->
+	<div id="parts" class="box">
+		<h5>保护类配件</h5>
+		<div><img data-original="images/01.jpg" src="images/114.jpg"><p>小米Max</p></div>
+		<div><img data-original="images/02.jpg" src="images/199.jpg"><p>小米手机5</p></div>
+	</div>
+	<!-- 优惠套装 -->
+	<div id="package" class="box">
+		<h5>优惠套装</h5>
+		<div><img data-original="images/01.jpg" src="images/279.jpg"><p>小米Max</p></div>
+		<div><img data-original="images/02.jpg" src="images/147.jpg"><p>小米手机5</p></div>
+	</div>
+</div>
+<!-- 分类==end -->
+<!-- 购物车==start -->
+<div class="shopping-car">
+<!-- 标题 -->
+    <div id="top" class="box">
+    	<i class="iconfont return">&#xe605;</i>
+    	<p>购物车</p>
+    	<i class="iconfont search">&#xe600;</i>
+    </div>
+    <div id="mark" class="box">
+    	<i class="iconfont">&#xe60d;</i>
+    </div>
+    <div id="btn" class="box">
+    	<div>全部商品</div>
+    	<div>精选商品</div>
+    </div>
+    <!-- 空内容占位区域==start -->
+	<div class="space"></div>
+	<!-- 空内容占位区域==end -->
+</div>
+<!-- 购物车==end -->
+<!-- 我的==start -->
+<div class="mine">
+	<div id="top" class="box">
+    	<i class="iconfont return">&#xe605;</i>
+    	<p>个人中心</p>
+    	<i class="iconfont search">&#xe600;</i>
+    </div>
+    <div id="log-in">
+    	<div class="orange">
+    		<p>立即登陆</p>
+    	</div>
+    	<div class="order">
+	    	<div class="circle">+</div>
+    		<ul>
+    			<li><i class="iconfont">&#xe60b;</i><p>全部订单</p></li>
+    			<li><i class="iconfont">&#xe608;</i><p>待付款</p></li>
+    			<li><i class="iconfont">&#xe60c;</i><p>待收货</p></li>
+    		</ul>
+    	</div>
+    </div>
+    <div id="footer" class="box">
+    	<p><i class="iconfont">&#xe60a;</i>我的优惠</p>
+    	<p><i class="iconfont">&#xe606;</i>F码通道</p>
+    	<p><i class="iconfont">&#xe607;</i>我的服务</p>
+    	<p><i class="iconfont">&#xe609;</i>设置</p>
+    </div>
+    <!-- 空内容占位区域==start -->
+	<div class="space"></div>
+	<!-- 空内容占位区域==end -->
+</div>
+<!-- 我的==end -->
+<!-- 搜索页==start -->
+<div class="search-page">
+    <div id="top" class="box">
+    	<i class="iconfont return">&#xe604;</i>
+    	<input type="search"></input>
+    	<i class="iconfont search">&#xe600;</i>
+    </div>
+    <span>小米5特价1599元起</span>
+    <span>小米智能电视3s 55"/65"</span>
+    <span>红米Note4</span>
+    <span>双摄红米Pro</span>
+    <span>红米3S</span>
+    <span>笔记本</span>
+    <span>电饭煲</span>
+    <span>手环</span>
+</div>
+<!-- 搜索页==end -->
+  <script type="text/javascript">
+ (function(){
+ 	 // 设置相关区域高度适应；布局
+     var changePic=$('#change-pic');
+     var changePicImg=$('#change-pic img');
+     changePicImg.width(window.innerWidth);
+     var changePicImgHeight=changePicImg.height();
+     // changePic.height(changePicImgHeight);
+     // $('#change-pic span').width(window.innerWidth);
+     var search=$('#search');
+     var navBar=$('#nav-bar');
+     var a=Math.round(window.innerWidth/11.29);
+     // var a=Math.round(changePicImgHeight/5.3);
+     // var b=Math.round(changePicImgHeight/3.2);
+     var c=Math.round(window.innerWidth/6.73);
+     var d=Math.round(window.innerWidth/10);
+     var e=Math.round(window.innerWidth/2.6);
+     search.height(a);//设置搜索栏高度自适应
+     navBar.height(c);//设置导航栏高度自适应
+     var buyOffImgWidth=$('#buy-off li img').width();//获取li标签下img动态宽度
+     $('#buy-off li').height(buyOffImgWidth*1.093);//根据图片动态宽度设置li标签高度
+     var space=$('.space');
+     space.height(c+5);//设置占位u区高度高于#nav-bar 5px；
+     $('#search .iconfont').css({
+     	fontSize:a*0.7,
+     	lineHeight: a*0.7+10+"px"
+     });//设置搜索区图标大小；
+     $('#nav-bar .iconfont').css('font-size', c*0.4);//设置导航栏图标大小；
+     /*商品分类*/
+     $('#top').height(d);//设置除首页搜索栏高度自适应；
+     $('#top .iconfont').css({
+     	fontSize:d*0.7,
+     	lineHeight: d*0.7+10+"px"
+     });
+      $('#top p').css('line-height',d+"px");
+      $('#phone').height(Math.ceil($('.classify #phone div').length/4)*e+'px');
+      $('#pc').height(Math.ceil($('.classify #pc div').length/4)*e+'px');
+      $('#tv').height(Math.ceil($('.classify #tv div').length/4)*e+'px');
+      $('#hardware').height(Math.ceil($('.classify #hardware div').length/4)*e+'px');
+      $('#power').height(Math.ceil($('.classify #power div').length/4)*e+'px');
+      $('#headset').height(Math.ceil($('.classify #headset div').length/4)*e+'px');
+      $('#life').height(Math.ceil($('.classify #life div').length/4)*e+'px');
+      $('#parts').height(Math.ceil($('.classify #parts div').length/4)*e+'px');
+      $('#package').height(Math.ceil($('.classify #package div').length/4)*e+'px');
+      $(".classify .box:last-child").css('margin-bottom', c+13+"px");
+      /*购物车*/
+      $('.shopping-car').height(window.innerWidth*1.78);
+      $(".shopping-car #mark").height(Math.round(window.innerWidth/1.35));
+      $(".shopping-car #mark .iconfont").css('fontSize', 2.5*c+"px");;
+      $(".shopping-car #btn").height(c*1.3);
+      $(".shopping-car #btn div").css('lineHeight', c*1.3+"px");
+      /*个人中心*/
+      $('#log-in .orange').height(2.5*d);
+      $('#log-in .orange p').css('top', d*0.5);
+      $('#log-in .order .circle').height($('#log-in .orange .circle').width());
+      // var f=
+      $('#log-in .order .circle').css({'top':-d,lineHeight:2*d+"px"});
+      $('#log-in .order').height(4*d);
+      $('#log-in .order .iconfont').css('fontSize', d*0.8);
+      $('#footer p').height(d);
+      $('#footer .iconfont').css('fontSize', d*0.6);
+      $('#footer p').css('lineHeight', d+"px");
+      // $('#footer').height(integer)
+ })();
+  </script>
+<script type="text/javascript">
+(function(){
+	$('#nav-bar div').on('tap',function(event) {
+		event.preventDefault();
+		$(this).addClass('hover');
+		$(this).siblings().removeClass('hover');
+		if ($(this).index()==0) {
+			$('.home').show();
+			$('.classify, .shopping-car, .mine').hide();
+		};
+		if($(this).index()==1){
+				$('.classify').show();
+				$('.home,.shopping-car, .mine').hide();
+			};
+		if($(this).index()==2){
+			$('.shopping-car').show();
+			$('.classify,.home,.mine').hide();
+		};
+		if($(this).index()==3){
+			$('.mine').show();
+			$('.home,.shopping-car,.classify').hide();
+		}
+	}); 
+})();
+/**
+ * 设置回退，搜索图标tap事件；
+ * 
+ */
+(function(){
+	$('i.return').on('tap', function(event) {
+		// event.preventDefault();
+		$('.home').show();
+		$('#nav-bar').show();
+		$('.search-page').hide();
+		$('#nav-bar div').eq(0).addClass("hover");
+		$('#nav-bar div').eq(0).siblings().removeClass('hover');
+	    $('.classify, .shopping-car, .mine').hide();
+	});
+	$('.search').on('tap', function(event) {
+		event.preventDefault();
+		$('.search-page').show();
+		$('.home,.mine,.shopping-car,.classify').hide();
+		$('#nav-bar').hide();
+	});
+})();
+/*首页轮播图*/
+(function(){
+	var _w=window.innerWidth;
+	var index=0;
+	// var nStartX = 0;
+	var _m = $('.change-tab li').length - 1;
+    var changePic = document.getElementById('change-pic');
+    // /*touchstart事件*/
+    changePic.addEventListener('touchstart', function(event) {
+        event.preventDefault();
+        clearInterval(t);
+
+        var date=new Date();
+        startTime=date.getTime();
+        // console.log(startTime);
+        nEndX = event.targetTouches[0].pageX ;
+        nStartX=nEndX;//定义不同名变量，便于判断触点移动方向；
+        
+    }, false);
+   /*touchend事件*/
+    changePic.addEventListener('touchend', function(event) {
+        event.preventDefault();
+        t=setInterval(function(){autoChange();},4000);
+        // autoChange();
+        console.log("start");
+        var date=new Date();
+        endTime=date.getTime();
+        var mw = $('#change-pic .ul li').width(); // 获取可视区域宽度
+        var _l = mw + $('#change-pic .ul').position().left%mw; //移动的距离
+        var _w = mw/2;//图片宽度一半
+        var _sw=_w/2;
+        
+        var ml = $('#change-pic .ul').position().left;//这里要重新获取left值
+        /*计算滑动事件的持续时间，小于300过四分之一点变化（点滑效果），大于300过中点变化（拖动滑动）*/
+        if (endTime-startTime>=300) { 
+        	// console.log(endTime-startTime);
+	        if(_l <=_w){ //中点判断
+	            ml = ml - _l
+	        }else{
+	            ml = ml + (mw - _l);
+	             
+                // $("#change-pic .ul").css('left','0px');  
+	        }
+	        if(ml >= -mw){
+	            ml = 0;
+	           
+	        }else if(ml<= -mw*4){
+	        	// alert("wrong");
+	        	ml = -mw * _m;
+	        }
+	    }else{
+	    	if (nStartX>nEndX) {/*页面向右滑动*/
+	    		 // console.log(_l);
+		    	// console.log(endTime-startTime);
+		    	if(_l >=_sw){ //过四分之一点判断
+		            ml = ml - _l
+		        }else{
+		            ml = ml + (mw - _l)
+		        }
+		        if(ml >= 0){
+		            ml = 0;
+		        }else if(ml<= -mw*4){
+		        	// alert("wrong");
+		        	ml = -mw * _m;
+		        }
+		    }else{/*页面向左滑动*/
+		    	// console.log(endTime-startTime);
+		    	if(_l <=_sw){ //过四分之一点判断
+		            ml = ml - _l
+		        }else{
+		        	 // $("#banner ul>li").eq(3).prependTo($("#banner ul"));
+		            ml = ml + (mw - _l)
+		        }
+		        if(ml >=0){
+		            ml = 0;
+		        }else if(ml<= -mw*4){
+		        	// alert("wrong");
+		        	ml = -mw * _m;
+		        }
+		         // $('#change-pic .ul').children().first().remove().clone(true).appendTo($(this)); 
+		    }
+		}
+        $('#change-pic .ul').animate({'left': ml+"px"}, 200);
+        var _now = parseInt(-ml/mw);
+        $('.change-tab li').eq(_now).addClass('active').siblings('li').removeClass('active');
+        // autoChange();
+        // $('.change-tab p').html($('#change-pic li').eq(_now).attr('data-t'));
+        
+    }, false);
+
+    /*touchmove事件*/
+    changePic.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+        var touch = event.targetTouches[0];
+        var _l = $('#change-pic .ul').position().left-nEndX+touch.pageX;//移动距离计算，当前ul left值，减去触摸开始事件时触点位置，加上移动过程中触摸点变化值。
+        nEndX = touch.pageX;
+        $('#change-pic .ul').css('left', _l+"px");
+        
+    }, false);
+// t=setInterval(function(){autoChange();},4000);
+ $('.change-tab li').on('tap', function(event) {
+ 	// event.preventDefault();
+ 	index=$(this).index();
+ 	$(this).addClass('active').siblings('li').removeClass('active');
+ 	$('#change-pic .ul').stop(true).animate({'left': -_w*index+"px"}, 200);
+ 	/* Act on the event */
+ 	
+ });
+
+// var count=_now;
+function autoChange(){
+	// var count=1;
+	$('.change-tab li').eq(index).trigger('tap');
+    if (index>=_m){
+		index=0;
+	}else{
+		index++;
+	}
+	console.log(index);
+}
+// setTimeout(function(){autoChange();},4000);
+// console.log(count);
+// autoChange();
+t=setInterval(function(){autoChange();},4000);
+// console.log(count);
+// autoChange();
+// var count=0;
+// $('#change-pic').on('swipeLeft',function() {
+// 	event.preventDefault();
+// 	$('#change-pic .ul').animate({'left':-count* $(window).width()},200);
+// 	if (count>3) {
+// 		count++;
+// 	}else{
+// 		count=0;
+// 	}
+// });
+//自动切换
+// function tabBanner(n){
+//     $('#change-pic .ul').animate({'left': -n * $(window).width()});
+//     $('.change-tab li').eq(n).addClass('active').siblings('li').removeClass('active');
+//     // $('.banner-tab p').html($('.banner-tab li').eq(n).attr('data-title'));
+// }
+})();
+//自适应
+// function bannerShow(){
+//     var _w = $(window).width();
+//     var _h = _w * 0.5
+//     $('.banner-box').height(_h);
+//     $('.banner-show').width(_w * 5);
+//     $('.banner-show li').width(_w);
+// }
+	</script>
+  </body>
+</html>
