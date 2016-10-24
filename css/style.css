@@ -26,7 +26,10 @@ padding:0;
 }
 /*-- banner --*/
 .banner{
-background:#ced7df;
+/*background:#ced7df;*/
+  background:#ced7df url(../images/bg.jpeg) no-repeat;
+  background-size: 100% 100%;
+  /*z-index: 0;*/
 }
 /*-- menu --*/
 .nav-right span{
@@ -168,7 +171,8 @@ div#portfolio {
   background:#fff;
   padding: 8px;
   position: relative;
-  width: 32.4%;
+  width: 47%;
+  /*clear: both;*/
 }
 .da-thumbs li a,
 .da-thumbs li a img {

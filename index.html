@@ -35,6 +35,7 @@
 <body>
 <!-- lvyonghua -->
 <div id="home" class="banner">
+	<!-- <img src="images/bg.jpeg" alt=""> -->
 	<div class="container">
 		<div class="banner-grids">
 			<div class="col-md-4 navigation">
@@ -56,6 +57,13 @@
 							</nav>
 							<!-- script for menu -->
 							<script> 
+							    window.onload = function(){
+							    	$('.banner').height(window.innerWidth/1.5);
+							    }
+							    window.onresize = function(){
+							    	$('.banner').height(window.innerWidth/1.5);
+								}
+							    
 								$( "span.menu" ).click(function() {
 								$( "ul.nav1" ).slideToggle( 300, function() {
 								 // Animation complete.
@@ -66,9 +74,9 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-			<div class="col-md-8 banner-image text-center">
+			<!-- <div class="col-md-8 banner-image text-center">
 				<img data-original="images/lv.png" src="images/lv.png" alt=""/>
-			</div>
+			</div> -->
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -86,7 +94,7 @@
 		<div class="about-grids">
 		   	<div class="col-md-6 about-grid">
 		   		<h4>我的闪光点</h4>
-		   		<p>1·热爱编程，追求美学，已自学前端开发相关知识半年多；<br/>
+		   		<p>1·热爱编程，追求美学，已自学前端开发相关知识近一年；<br/>
 					2·熟悉w3c标准，熟悉JS CSS html ajax；掌握bootstrap，jquery，会使用git github；<br/>
 					3·对w3c新标准，CSS3,HTML5新特性，移动端开发方案进行了初步学习；<br/>
 					4·学习能力强且主动，在自学前端知识课业时间紧张情况下还获得本专业的奖学金；<br/>
@@ -176,14 +184,14 @@
 			<h3>demo作品</h3>
 			<section>
 				<ul id="da-thumbs" class="da-thumbs">
-					<li>
+				<!-- 	<li>
 						<a href="demo1.html" rel="title" class="b-link-stripe b-animate-go  thickbox">
 							<img data-original="images/a1.png" src="images/a1.png" alt="" />
 							<div>
 								<h5>查看</h5>
 							</div>
 						</a>
-					</li>
+					</li> -->
 					<li>
 						<a href="demo2" rel="title" class="b-link-stripe b-animate-go  thickbox">
 							<img data-original="images/a2.png" src="images/a2.png" alt="" />
@@ -202,8 +210,16 @@
 						</a>
 					</li>
 					<li>
-						<a href="demo1.html" rel="title" class="b-link-stripe b-animate-go  thickbox">
+						<a href="demo4.htm" rel="title" class="b-link-stripe b-animate-go  thickbox">
 							<img data-original="images/a4.png" src="images/a4.png" alt="" />
+							<div>
+								<h5>查看(需要打开浏览器移动端窗口模拟器)</h5>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="demo5.html" rel="title" class="b-link-stripe b-animate-go  thickbox">
+							<img data-original="images/a5.png" src="images/a5.png" alt="" />
 							<div>
 								<h5>查看(需要打开浏览器移动端窗口模拟器)</h5>
 							</div>
@@ -214,17 +230,20 @@
 			</section>
 				<script type="text/javascript" charset="utf-8">
 				$(function() {
+						// $('#da-thumbs a').eq(0).click(function(event) {
+						// window.location.href='demo1/demo1.html';
+						// 					});
 						$('#da-thumbs a').eq(0).click(function(event) {
-						window.location.href='demo1/demo1.html';
-											});
-						$('#da-thumbs a').eq(1).click(function(event) {
 						window.location.href='demo2/demo2.html';
 											});
-						$('#da-thumbs a').eq(2).click(function(event) {
+						$('#da-thumbs a').eq(1).click(function(event) {
 						window.location.href='demo3/demo3.html';
 											});
-						$('#da-thumbs a').eq(3).click(function(event) {
+						$('#da-thumbs a').eq(2).click(function(event) {
 						window.location.href='demo4/demo4.htm';
+											});
+						$('#da-thumbs a').eq(3).click(function(event) {
+						window.location.href='demo5/index.html';
 											});
 					
 				});
@@ -244,7 +263,7 @@
 		<div class="get-info text-center">
 			<h3>联系方式</h3>
 			<h4><i>关于面试的说明</i></h4>
-			<p>目前在校埋头于毕业设计，如果方便，希望您先期对我进行电话面试，若满意，可即刻动身前往公司所在地进行笔试，面试。学校毕业答辩时间在十一月初，之后可以入职进行连续实习，可满足6个月任职要求。</p>
+			<p>目前在校埋头于毕业设计，如果方便，希望您先期对我进行电话面试，若满意，可即刻动身前往公司所在地进行笔试，面试。学校毕业答辩结束时间为12月初，之后可以入职进行连续实习，可满足6个月任职要求。</p>
 		</div>
 	</div>
 </div>
@@ -364,7 +383,7 @@
 	 visits=parseInt(visits)+1;
 	}  
 	setCookie("counter", visits, now)
-	document.write("自2016年10月17日统计起，您是到访的第" + visits + "位用户！");
+	document.write("您是今天到访的第" + visits + "位用户！");
 </script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
