@@ -129,6 +129,9 @@ var H5ComponentPie = function(name,cfg){
 		ctx.stroke();
 		
 		if (per>=1) {
+			component.find('.text').css('transition', 'all 0s');
+			H5ComponentPie.reSort(component.find('.text'));
+			component.find('.text').css('transition', 'all 1s');
 			component.find('.text').css('opacity', 1);
 			ctx.clearRect(0,0,w,h);
 		}
@@ -158,8 +161,52 @@ var H5ComponentPie = function(name,cfg){
 
 	return component;
 }
+//重排项目文本元素，仿制重叠
+H5ComponentPie.reSort = function(list){
+	//检测是否相交
+	var compare = function(domA,domB){
+		//元素的位置不用left，因为可能为auto
+		var offsetA = $(domA).offset();
+		var offsetB = $(domB).offset();
+		//domA的投影
+		var shadowA_x = [offsetA.left,$(domA).width()+offsetA.left];
+		var shadowA_y = [offsetA.top,$(domA).height()+offsetA.top];
+	    //domB的投影
+	    var shadowB_x = [offsetB.left,$(domB).width()+offsetB.left];
+		var shadowB_y = [offsetB.top,$(domB).height()+offsetB.top];
+		//监测x方向是否相交
+		var intersect_x = (shadowA_x[0]>shadowB_x[0]&&shadowA_x[0]<shadowB_x[1])||(shadowA_x[1]>shadowB_x[0]&&shadowA_x[1]<shadowB_x[1]);
+		//监测y方向是否相交
+		var intersect_y = (shadowA_y[0]>shadowB_y[0]&&shadowA_y[0]<shadowB_y[1])||(shadowA_y[1]>shadowB_y[0]&&shadowA_y[1]<shadowB_y[1]);
+		return intersect_x&&intersect_y;
+	}
+	//错开重排
+	var reset = function(domA,domB){
+		if ($(domA).css('top')!='auto') {
+			$(domA).css('top', parseInt($(domA).css('top'))+$(domB).height());
+	    }
+	    if ($(domA).css('bottom')!='auto') {
+			$(domA).css('bottom', parseInt($(domA).css('bottom'))+$(domB).height());
+	    }
+    }
 
+    //定义将要重排的元素
+    var willReset = [list[0]];
+	$.each(list,function(i,domTarget){
+		if(compare(willReset[willReset.length-1],domTarget)){
+			willReset.push(domTarget);//不会把自身加入对比
+		}
+	});
+	if (willReset.length>1) {
+		$.each(willReset,function(i,domA){
+			if (willReset[i+1]) {
+				reset(domA,willReset[i+1]);
+		    }
+		});
+		H5ComponentPie.reSort(willReset);
+	}
 
+}
 
 
 
